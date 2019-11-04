@@ -5,9 +5,18 @@ exports.client = () => pagarme.client.connect({ api_key: process.env.PAGARME_KEY
 /**
  * @function
  * @param {Client} client - uma instancia do pagarme conexão.
+ * @param {Boolean} capture - Captura de transação.
  * @param  {} data
  */
-exports.transaction = (client, data) => client.transactions.create(data)
+exports.transaction = async (client, data, capture = false) => {
+  try {
+    if (!capture) return client.transactions.create(data)
+    const transaction = await client.transactions.create(data)
+    return client.transactions.capture(transaction)
+  } catch (err) {
+    throw new Error(err)
+  }
+}
 
 /**
  * @function
@@ -21,4 +30,3 @@ exports.transaction = (client, data) => client.transactions.create(data)
  * @return {Promise}
  */
 exports.create_card = (client, data) => client.cards.create(data)
-

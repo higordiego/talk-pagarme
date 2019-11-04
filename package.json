@@ -4,7 +4,9 @@
   "description": "consumindo api do pagarme",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint '**/*.js' ",
+    "lint:fix": "eslint '**/*.js' --fix"
   },
   "repository": "git@github.com:higordiego/talk-pagarme.git",
   "author": "Higor Diego <higordiegoti@gmail.com>",
@@ -14,7 +16,19 @@
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "express-validation": "^1.0.3",
+    "express-validator": "^6.2.0",
+    "husky": "^3.0.9",
+    "jsinspect": "^0.12.7",
     "mongoose": "^5.7.5",
     "pagarme": "^4.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
   }
 }
